@@ -17,9 +17,10 @@
   },
   "keywords": [
     "trie",
-    "proxy",
+    "prefix-trie",
+    "radix-trie",
     "simple-trie",
-    "data-structure"
+    "zero-dependencies"
   ],
   "author": "mvayngrib",
   "license": "MIT"
