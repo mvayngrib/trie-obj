@@ -2,6 +2,8 @@
 
 a fun to use implementation of the trie data structure
 
+not optimized for common suffixes, etc. Feel free to submit PRs
+
 ## Usage
 
 ```js
