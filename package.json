@@ -1,6 +1,6 @@
 {
   "name": "trie-obj",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple trie implementation based on JS proxies",
   "main": "index.js",
   "devDependencies": {
