@@ -1,12 +1,8 @@
 
 const LEAF = Symbol('leaf in trie')
-const SIZE = Symbol('size of trie')
 
-const getSize = trie => trie[SIZE]
 const createTrie = () => {
   const trie = Object.create(null)
-  trie[SIZE] = 0
-
   const flatten = parent => {
     const values = []
     if (!parent) return values
@@ -40,12 +36,8 @@ const createTrie = () => {
   }
 
   return new Proxy(trie, {
-    get(obj, key) {
-      if (key === SIZE) return trie[SIZE]
-
-      return flatten(getNodeForKey(obj, key))
-    },
-    set(obj, key, value) {
+    get: (obj, key) => flatten(getNodeForKey(obj, key)),
+    set: (obj, key, value) => {
       let parent = obj
       for (let i = 0; i < key.length; i++) {
         let char = key[i]
@@ -56,17 +48,12 @@ const createTrie = () => {
         }
       }
 
-      if (parent[LEAF] == null) {
-        trie[SIZE]++
-      }
-
       parent[LEAF] = value
     },
-    deleteProperty(obj, key) {
+    deleteProperty: (obj, key) => {
       const node = getNodeForKey(obj, key)
       if (node && node[LEAF] != null) {
         delete node[LEAF]
-        trie[SIZE]--
         return true
       }
 
@@ -76,4 +63,3 @@ const createTrie = () => {
 }
 
 exports.create = createTrie
-exports.size = getSize

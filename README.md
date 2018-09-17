@@ -21,6 +21,4 @@ console.log(trie.hello)
 delete trie.helicon
 console.log(trie.he)
 // ['world']
-console.log(Trie.size(trie))
-// 1
 ```
