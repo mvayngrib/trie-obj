@@ -9,5 +9,6 @@ module.exports = {
     "prefer-const": ["off"],
     "no-plusplus": ["off"],
     "no-multi-assign": ["off"],
+    "no-param-reassign": ["off"],
   }
 }

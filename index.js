@@ -35,9 +35,11 @@ const createTrie = () => {
     return parent
   }
 
+  const normalizeKey = key => key.toLowerCase()
   return new Proxy(trie, {
-    get: (obj, key) => flatten(getNodeForKey(obj, key)),
+    get: (obj, key) => flatten(getNodeForKey(obj, normalizeKey(key))),
     set: (obj, key, value) => {
+      key = normalizeKey(key)
       let parent = obj
       for (let i = 0; i < key.length; i++) {
         let char = key[i]
@@ -51,7 +53,7 @@ const createTrie = () => {
       parent[LEAF] = value
     },
     deleteProperty: (obj, key) => {
-      const node = getNodeForKey(obj, key)
+      const node = getNodeForKey(obj, normalizeKey(key))
       if (node && node[LEAF] != null) {
         delete node[LEAF]
         return true

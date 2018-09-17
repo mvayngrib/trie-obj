@@ -6,9 +6,11 @@ test('trie', t => {
 
   trie.he = 'she'
   t.same(trie.he, ['she'])
+  t.same(trie.hE, ['she'])
 
-  trie.hello = 'world'
+  trie.heLLo = 'world'
   t.same(trie.he, ['she', 'world'])
+  t.same(trie.HELLo, ['world'])
 
   trie.hello = 'world1'
   t.same(trie.he, ['she', 'world1'])
